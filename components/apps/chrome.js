@@ -5,8 +5,8 @@ export class Chrome extends Component {
         super();
         this.home_url = 'https://www.google.com/webhp?igu=1';
         this.state = {
-            url: 'https://www.google.com/webhp?igu=1',
-            display_url: "https://www.google.com",
+            url: 'https://stella-portfolio-show.vercel.app/',
+            display_url: "https://stella-portfolio-show.vercel.app/",
         }
     }
 

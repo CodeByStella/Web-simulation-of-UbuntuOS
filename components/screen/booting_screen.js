@@ -56,7 +56,7 @@ function BootingScreen(props) {
       <div className="text-white mb-4">
         <a
           className="underline"
-          href="https://www.linkedin.com/in/aiden-mori-193b9325b/"
+          href="https://www.linkedin.com/in/stella-ray-193b9325b/"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -64,7 +64,7 @@ function BootingScreen(props) {
         </a>
         <span className="font-bold mx-1">|</span>
         <a
-          href="https://github.com/aiden77mori"
+          href="https://github.com/stellaray777"
           rel="noreferrer noopener"
           target="_blank"
           className="underline"

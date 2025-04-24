@@ -1,132 +1,123 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import BootingScreen from "./screen/booting_screen";
 import Desktop from "./screen/desktop";
 import LockScreen from "./screen/lock_screen";
 import Navbar from "./screen/navbar";
 import ReactGA from "react-ga";
 
-export default class Ubuntu extends Component {
-  constructor() {
-    super();
-    this.state = {
-      screen_locked: false,
-      bg_image_name: "wall-2",
-      booting_screen: true,
-      shutDownScreen: false,
-    };
-  }
+const Ubuntu = () => {
+  const [screenLocked, setScreenLocked] = useState(false);
+  const [bgImageName, setBgImageName] = useState("wall-8");
+  const [bootingScreen, setBootingScreen] = useState(true);
+  const [shutDownScreen, setShutDownScreen] = useState(false);
 
-  componentDidMount() {
-    this.getLocalData();
-  }
+  useEffect(() => {
+    getLocalData();
+  }, []);
 
-  setTimeOutBootScreen = () => {
+  const setTimeOutBootScreen = () => {
     setTimeout(() => {
-      this.setState({ booting_screen: false });
+      setBootingScreen(false);
     }, 2000);
   };
 
-  getLocalData = () => {
-    // Get Previously selected Background Image
-    let bg_image_name = localStorage.getItem("bg-image");
-    if (bg_image_name !== null && bg_image_name !== undefined) {
-      this.setState({ bg_image_name });
+  const getLocalData = () => {
+    const bgImage = localStorage.getItem("bg-image");
+    if (bgImage) {
+      setBgImageName(bgImage);
     }
 
-    let booting_screen = localStorage.getItem("booting_screen");
-    if (booting_screen !== null && booting_screen !== undefined) {
-      // user has visited site before
-      this.setState({ booting_screen: false });
+    const booting = localStorage.getItem("booting_screen");
+    if (booting) {
+      setBootingScreen(false);
     } else {
-      // user is visiting site for the first time
       localStorage.setItem("booting_screen", false);
-      this.setTimeOutBootScreen();
+      setTimeOutBootScreen();
     }
 
-    // get shutdown state
-    let shut_down = localStorage.getItem("shut-down");
-    if (shut_down !== null && shut_down !== undefined && shut_down === "true")
-      this.shutDown();
-    else {
-      // Get previous lock screen state
-      let screen_locked = localStorage.getItem("screen-locked");
-      if (screen_locked !== null && screen_locked !== undefined) {
-        this.setState({
-          screen_locked: screen_locked === "true" ? true : false,
-        });
+    const shutDown = localStorage.getItem("shut-down");
+    if (shutDown === "true") {
+      shutDownHandler();
+    } else {
+      const locked = localStorage.getItem("screen-locked");
+      if (locked) {
+        setScreenLocked(locked === "true");
       }
     }
   };
 
-  lockScreen = () => {
-    // google analytics
+  const lockScreen = () => {
     ReactGA.pageview("/lock-screen");
     ReactGA.event({
-      category: `Screen Change`,
-      action: `Set Screen to Locked`,
+      category: "Screen Change",
+      action: "Set Screen to Locked",
     });
 
     document.getElementById("status-bar").blur();
     setTimeout(() => {
-      this.setState({ screen_locked: true });
-    }, 100); // waiting for all windows to close (transition-duration)
+      setScreenLocked(true);
+    }, 100);
     localStorage.setItem("screen-locked", true);
   };
 
-  unLockScreen = () => {
+  const unLockScreen = () => {
     ReactGA.pageview("/desktop");
 
-    window.removeEventListener("click", this.unLockScreen);
-    window.removeEventListener("keypress", this.unLockScreen);
+    window.removeEventListener("click", unLockScreen);
+    window.removeEventListener("keypress", unLockScreen);
 
-    this.setState({ screen_locked: false });
+    setScreenLocked(false);
     localStorage.setItem("screen-locked", false);
   };
 
-  changeBackgroundImage = (img_name) => {
-    this.setState({ bg_image_name: img_name });
-    localStorage.setItem("bg-image", img_name);
+  const changeBackgroundImage = (imgName) => {
+    setBgImageName(imgName);
+    localStorage.setItem("bg-image", imgName);
   };
 
-  shutDown = () => {
+  const shutDownHandler = () => {
     ReactGA.pageview("/switch-off");
     ReactGA.event({
-      category: `Screen Change`,
-      action: `Switched off the Ubuntu`,
+      category: "Screen Change",
+      action: "Switched off the Ubuntu",
     });
 
     document.getElementById("status-bar").blur();
-    this.setState({ shutDownScreen: true });
+    setShutDownScreen(true);
     localStorage.setItem("shut-down", true);
   };
 
-  turnOn = () => {
+  const turnOn = () => {
     ReactGA.pageview("/desktop");
 
-    this.setState({ shutDownScreen: false, booting_screen: true });
-    this.setTimeOutBootScreen();
+    setShutDownScreen(false);
+    setBootingScreen(true);
+    setTimeOutBootScreen();
     localStorage.setItem("shut-down", false);
   };
 
-  render() {
-    return (
-      <div className="w-screen h-screen overflow-hidden" id="monitor-screen">
-        <LockScreen
-          isLocked={this.state.screen_locked}
-          bgImgName={this.state.bg_image_name}
-          unLockScreen={this.unLockScreen}
-        />
-        <BootingScreen
-          visible={this.state.booting_screen}
-          isShutDown={this.state.shutDownScreen}
-          turnOn={this.turnOn}
-        />
-        <Navbar lockScreen={this.lockScreen} shutDown={this.shutDown} />
-        <Desktop
-          bg_image_name={this.state.bg_image_name}
-          changeBackgroundImage={this.changeBackgroundImage}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="w-screen h-screen overflow-hidden" id="monitor-screen">
+      <LockScreen
+        isLocked={screenLocked}
+        bgImgName={bgImageName}
+        unLockScreen={unLockScreen}
+      />
+
+      <BootingScreen
+        visible={bootingScreen}
+        isShutDown={shutDownScreen}
+        turnOn={turnOn}
+      />
+
+      <Navbar lockScreen={lockScreen} shutDown={shutDownHandler} />
+
+      <Desktop
+        bg_image_name={bgImageName}
+        changeBackgroundImage={changeBackgroundImage}
+      />
+    </div>
+  );
+};
+
+export default Ubuntu;

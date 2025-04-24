@@ -2,12 +2,12 @@ import Image from "next/image";
 import { Component } from "react";
 import ReactGA from "react-ga";
 
-export class AboutAiden extends Component {
+export class AboutStella extends Component {
   constructor() {
     super();
     this.screens = {};
     this.state = {
-      screen: () => {},
+      screen: () => { },
       active_screen: "about", // by default 'about' screen is active
       navbar: false,
     };
@@ -20,7 +20,7 @@ export class AboutAiden extends Component {
       history: <History />,
       projects: <Projects />,
       skills: <Skills />,
-      resume: <Resume />,
+      // resume: <Resume />,
     };
 
     let lastVisitedScreen = localStorage.getItem("about-section");
@@ -67,7 +67,7 @@ export class AboutAiden extends Component {
         >
           <img
             className=" w-3 md:w-4"
-            alt="aiden vivek"
+            alt="stella vivek"
             src="./themes/Yaru/status/about.svg"
           />
           <span className=" ml-1 md:ml-2 text-gray-50 ">About Me</span>
@@ -85,7 +85,7 @@ export class AboutAiden extends Component {
         >
           <img
             className=" w-3 md:w-4"
-            alt="aiden' education"
+            alt="stella' education"
             src="./themes/Yaru/status/education.svg"
           />
           <span className=" ml-1 md:ml-2 text-gray-50 ">Education</span>
@@ -103,7 +103,7 @@ export class AboutAiden extends Component {
         >
           <img
             className=" w-3 md:w-4"
-            alt="aiden' history"
+            alt="stella' history"
             src="./themes/Yaru/status/work-history.svg"
           />
           <span className=" ml-1 md:ml-2 text-gray-50 ">Experience</span>
@@ -152,7 +152,7 @@ export class AboutAiden extends Component {
             (this.state.active_screen === "resume"
               ? " bg-ub-orange bg-opacity-100 hover:bg-opacity-95"
               : " hover:bg-gray-50 hover:bg-opacity-5 ") +
-            " w-28 md:w-full md:rounded-none rounded-sm outline-none py-1.5 focus:outline-none duration-100 my-0.5 flex justify-start items-center pl-2 md:pl-2.5 cursor-pointer"
+            " w-28 md:w-full md:rounded-none rounded-sm outline-none py-1.5 focus:outline-none duration-100 my-0.5 flex justify-start items-center pl-2 md:pl-2.5 cursor-pointer hidden"
           }
         >
           <img
@@ -201,10 +201,10 @@ export class AboutAiden extends Component {
   }
 }
 
-export default AboutAiden;
+export default AboutStella;
 
-export const displayAboutAiden = () => {
-  return <AboutAiden />;
+export const displayAboutStella = () => {
+  return <AboutStella />;
 };
 
 function About() {
@@ -213,13 +213,13 @@ function About() {
       <div className="w-20 md:w-32 mt-4 bg-white rounded-full">
         <img
           className="w-full rounded-full"
-          src="./images/logos/aidenmori.png"
-          alt="Aiden Mori Logo"
+          src="./images/logos/stellaray777.png"
+          alt="Stella Ray Logo"
         />
       </div>
       <div className=" mt-2 text-lg md:text-2xl text-center px-1">
         <div>
-          My name is <span className="font-bold">Aiden</span> ,
+          My name is <span className="font-bold">Stella</span> ,
         </div>
         <div className="font-normal ml-1">
           <span className="text-pink-600 font-bold">
@@ -239,7 +239,7 @@ function About() {
           height={25}
           className="cursor-pointer"
           onClick={() =>
-            window.open("https://join.skype.com/invite/ASsHj806HhLp", "_blank")
+            window.open("https://join.skype.com/invite/x6C2Nf1SDyrp", "_blank")
           }
         />
         <Image
@@ -249,7 +249,7 @@ function About() {
           height={25}
           className="cursor-pointer"
           onClick={() =>
-            window.open("https://discord.com/users/aiden77mori", "_blank")
+            window.open("https://discord.gg/huYgwCPeeP", "_blank")
           }
         />
         <Image
@@ -258,7 +258,7 @@ function About() {
           width={25}
           height={25}
           className="cursor-pointer"
-          onClick={() => window.open("https://t.me/evw77", "_blank")}
+          onClick={() => window.open("https://t.me/StellaRay777", "_blank")}
         />
         <Image
           src="/images/logos/email.svg"
@@ -266,8 +266,13 @@ function About() {
           width={25}
           height={25}
           className="cursor-pointer"
-          onClick={() => window.open("mailto:aiden77mori@gmail.com", "_blank")}
+          onClick={() => window.open("mailto:stellaray4989@gmail.com", "_blank")}
         />
+      </div>
+      <div className="my-4 leading-tight tracking-tight text-sm md:text-base w-5/6 md:w-3/4 emoji-list">
+       <b>With 8+ years of experience, I specialize in crafting smooth, scalable, and high-performance web applications with a focus on clean UI/UX and seamless user interactions. I take pride in delivering solutions that not only meet but exceed client expectations—whether it's a sleek frontend, a robust backend, or optimizing system performance.</b>
+       <br/>
+
       </div>
       <ul className=" my-4 leading-tight tracking-tight text-sm md:text-base w-5/6 md:w-3/4 emoji-list">
         <li className=" list-pc my-2 md:text-base">
@@ -590,13 +595,13 @@ function History() {
             <div className="flex flex-wrap items-start justify-start text-xs py-4">
               {project.domains
                 ? project.domains.map((domain, index) => (
-                    <span
-                      key={index}
-                      className={`px-1.5 py-0.5 w-max border border-${tag_colors[domain]} text-${tag_colors[domain]} m-1 rounded-full`}
-                    >
-                      {domain}
-                    </span>
-                  ))
+                  <span
+                    key={index}
+                    className={`px-1.5 py-0.5 w-max border border-${tag_colors[domain]} text-${tag_colors[domain]} m-1 rounded-full`}
+                  >
+                    {domain}
+                  </span>
+                ))
                 : null}
             </div>
           </div>
@@ -618,10 +623,10 @@ function Education() {
       <ul className=" w-10/12  mt-4 ml-4 px-0 md:px-1">
         <li className="list-disc">
           <div className=" text-lg md:text-xl text-left font-bold leading-tight">
-            Computer Engineering, Victoria University
+            National Technical University of Ukraine
           </div>
-          <div className=" text-sm text-gray-400 mt-0.5">2012 - 2015</div>
-          <div className=" text-sm md:text-base">Bachelor of Engineering</div>
+          <div className=" text-sm text-gray-400 mt-0.5">2017-2021</div>
+          <div className=" text-sm md:text-base">Bachelor of Architecture (BArch), Computer engineering</div>
         </li>
       </ul>
       <div className="font-medium relative text-2xl mt-4 md:mt-4 mb-4 hidden">
@@ -692,46 +697,46 @@ function Skills() {
             <img
               className="m-1"
               src="https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flat&logo=javascript&logoColor=000000&labelColor=%23F7DF1C&color=%23FFCE5A"
-              alt="aiden javascript"
+              alt="stella javascript"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Typescript-3178c6?style=flat&logo=typescript&logoColor=ffffff"
-              alt="aiden typescript"
+              alt="stella typescript"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/-Solidity-ffffff?style=flat&logo=solidity&logoColor=000000&labelColor=%000000"
-              alt="aiden solidity"
+              alt="stella solidity"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white"
-              alt="aiden c++"
+              alt="stella c++"
             />
             <img
               className="m-1"
               src="http://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=ffffff"
-              alt="aiden python"
+              alt="stella python"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart&logoColor=white"
-              alt="aiden dart"
+              alt="stella dart"
             />
             <img
               src="https://img.shields.io/badge/-Sass-%23CC6699?style=flat&logo=sass&logoColor=ffffff"
-              alt="aiden SASS"
+              alt="stella SASS"
               className="m-1"
             />
             <img
               src="https://img.shields.io/badge/-Git-%23F05032?style=flat&logo=git&logoColor=%23ffffff"
-              alt="aiden git"
+              alt="stella git"
               className="m-1"
             />
             <img
               src="https://img.shields.io/badge/-Firebase-FFCA28?style=flat&logo=firebase&logoColor=ffffff"
-              alt="aiden firebase"
+              alt="stella firebase"
               className="m-1"
             />
           </div>
@@ -741,82 +746,82 @@ function Skills() {
             <img
               className=" m-1"
               src="https://img.shields.io/badge/Next-black?style=flat&logo=next.js&logoColor=ffffff"
-              alt="aiden next"
+              alt="stella next"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=ffffff"
-              alt="aiden react"
+              alt="stella react"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Angular-dd0031?style=flat&logo=angular&logoColor=ffffff"
-              alt="aiden angular"
+              alt="stella angular"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Svelte-ff3e00?style=flat&logo=svelte&logoColor=ffffff"
-              alt="aiden svelte"
+              alt="stella svelte"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Remix-00ccbb?style=flat&logo=remix&logoColor=000000"
-              alt="aiden remix"
+              alt="stella remix"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Web3JS-f16822?style=flat&logo=Web3.js&logoColor=ffffff"
-              alt="aiden web3"
+              alt="stella web3"
             />
             <img
               className=" m-1"
               src="https://img.shields.io/badge/-Hardhat-c5d11700?style=flat&logo=ethereum&logoColor=ffffff"
-              alt="aiden hardhat"
+              alt="stella hardhat"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/React Native-61DAFB?style=flat&logo=react&logoColor=white"
-              alt="aiden react native"
+              alt="stella react native"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/Ionic-3880ff?style=flat&logo=ionic&logoColor=white"
-              alt="aiden ionic framework"
+              alt="stella ionic framework"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white"
-              alt="aiden flutter"
+              alt="stella flutter"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white"
-              alt="aiden tailwind css"
+              alt="stella tailwind css"
             />
             <img
               src="https://img.shields.io/badge/-NodeJS-339933?style=flat&logo=Node.js&logoColor=ffffff"
-              alt="aiden node.js"
+              alt="stella node.js"
               className="m-1"
             />
             <img
               src="https://img.shields.io/badge/-ExpressJS-339933?style=flat&logo=Node.js&logoColor=ffffff"
-              alt="aiden express.js"
+              alt="stella express.js"
               className="m-1"
             />
             <img
               src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jquery&logoColor=white"
-              alt="aiden jquery"
+              alt="stella jquery"
               className="m-1"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/Redux-593D88?style=flat&logo=redux&logoColor=white"
-              alt="aiden redux"
+              alt="stella redux"
             />
             <img
               className="m-1"
               src="https://img.shields.io/badge/Docker-02569B?style=flat&logo=docker&logoColor=white"
-              alt="aiden docker"
+              alt="stella docker"
             />
           </div>
         </div>
@@ -1795,7 +1800,7 @@ function Projects() {
       name: "Facial Recognize",
       date: "Feb 2020",
       imgUrl: "./images/projects/facial-recognize.webp",
-      link: "https://github.com/aiden77mori/facial-recognization",
+      link: "https://github.com/stellaray777/facial-recognization",
       description: [
         <p>Face dectection project using face-api.js</p>,
         <p>API integration with react</p>,
@@ -2090,13 +2095,13 @@ function Projects() {
               <div className="flex flex-wrap items-start justify-start text-xs py-4">
                 {project.domains
                   ? project.domains.map((domain, index) => (
-                      <span
-                        key={index}
-                        className={`px-1.5 py-0.5 w-max border border-${tag_colors[domain]} text-${tag_colors[domain]} m-1 rounded-full`}
-                      >
-                        {domain}
-                      </span>
-                    ))
+                    <span
+                      key={index}
+                      className={`px-1.5 py-0.5 w-max border border-${tag_colors[domain]} text-${tag_colors[domain]} m-1 rounded-full`}
+                    >
+                      {domain}
+                    </span>
+                  ))
                   : null}
               </div>
             </div>
@@ -2111,7 +2116,7 @@ function Resume() {
     <iframe
       className="h-full w-full"
       src="./files/PResume.pdf"
-      title="aiden mori resume"
+      title="stella ray resume"
       frameBorder="0"
     ></iframe>
   );

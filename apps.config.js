@@ -7,18 +7,18 @@ import { displaySettings } from "./components/apps/settings";
 import { displayChrome } from "./components/apps/chrome";
 import { displayTrash } from "./components/apps/trash";
 import { displayGedit } from "./components/apps/gedit";
-import { displayAboutAiden } from "./components/apps/aiden";
+import { displayAboutStella } from "./components/apps/stella";
 import { displayTerminalCalc } from "./components/apps/calc";
 
 const apps = [
   {
-    id: "about-aiden",
-    title: "About Aiden",
-    icon: "./images/logos/aidenmori.png",
+    id: "about-stella",
+    title: "About Stella",
+    icon: "./images/logos/stellaray777.png",
     disabled: false,
     favourite: true,
     desktop_shortcut: true,
-    screen: displayAboutAiden,
+    screen: displayAboutStella,
   },
   {
     id: "gedit",

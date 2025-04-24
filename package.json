@@ -1,8 +1,7 @@
 {
-  "name": "aiden77mori-portfolio",
+  "name": "stellaray-portfolio",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://aidenworks.difines.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +13,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
-    "@netlify/plugin-nextjs": "^4.41.1",
     "autoprefixer": "^10.4.13",
     "expr-eval": "^2.0.2",
     "firebase": "^10.5.0",
